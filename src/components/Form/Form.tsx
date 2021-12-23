@@ -13,6 +13,7 @@ type State = {
 };
 
 const Form: React.FC = () => {
+    const [validForm, setValidForm] = useState<Boolean>(true);
 
     const [state, setState] = useState<State>({
         name: '',
@@ -39,10 +40,15 @@ const Form: React.FC = () => {
                 ...state,
                 image: event.target.files[0],
             });
+            setValidForm(true)
         }
     }
 
     function submitTheForm() {
+        if (state.image === undefined) {
+            setValidForm(false)
+            return
+        }
         const imageOrEmpty = state.image ? state.image : '';
         const testimonial = new FormData();
         testimonial.append('name', state.name)
@@ -89,6 +95,7 @@ const Form: React.FC = () => {
             <TextInput id='text-input' fieldname='location' placeholder='Your Location' onChange={handleInputChange}/>
             <textarea placeholder='Your Comment' name='comments' onChange={handleInputChange}></textarea>
             {renderFileUpload}
+            <span className={`warning-info ${validForm ? 'valid' : ''}`}>Upload your photo please.</span>
             <div className='buttons-container'>
                 <button className='form-button' onClick={submitTheForm}><span>Submit</span></button>
                 {state.image && <button className='form-button' onClick={removePhoto}><span>Remove photo</span></button>}
