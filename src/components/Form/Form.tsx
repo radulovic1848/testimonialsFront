@@ -65,9 +65,9 @@ const Form: React.FC = () => {
             <TextInput id='text-input' fieldname='name' placeholder='Your Name' onChange={handleInputChange}/>
             <TextInput id='text-input' fieldname='age' placeholder='Your Age' onChange={handleInputChange}/>
             <TextInput id='text-input' fieldname='location' placeholder='Your Location' onChange={handleInputChange}/>
-            <textarea placeholder='Your Comnent' name='comments' onChange={handleInputChange}></textarea>
+            <textarea placeholder='Your Comment' name='comments' onChange={handleInputChange}></textarea>
             <label htmlFor="file-upload" className="custom-file-upload">
-                <span>{state.image ? "Your photo is uploaded" : "Upload your photo"}</span>
+                <span>{state.image ? "Your photo is uploaded!" : "Upload your photo"}</span>
                 <input
                     id='file-upload'
                     className='file-input'
@@ -77,7 +77,7 @@ const Form: React.FC = () => {
                     onChange={handleFileInput}
                 />
             </label>
-            <button className='submit-button' type="submit" onClick={submitTheForm}><span>Submit</span></button>
+            <button className='submit-button' onClick={submitTheForm}><span>Submit</span></button>
         </div>
     )
 }

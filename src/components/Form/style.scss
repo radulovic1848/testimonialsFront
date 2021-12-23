@@ -7,15 +7,17 @@
     border: 1px solid blue;
     textarea {
         height: 50px;
-        padding-left: 10px;
+        padding: 10px 0 0 10px;
         border: 1px solid blue;
         border-radius: 5px;
         margin-bottom: 30px;
+        box-shadow: 0px 4px 4px rgba(3, 138, 255, 0.4);
     }
     .file-input {
         display: none;
     }
     .custom-file-upload {
+        cursor: pointer;
         border: 1px solid blue;
         border-radius: 5px;
         background-color: white;
@@ -24,6 +26,7 @@
         align-items: center;
         justify-content: center;
         margin-bottom: 30px;
+        box-shadow: 0px 4px 4px rgba(3, 138, 255, 0.4);
     }
     .submit-button {
         width: 30%;
@@ -31,5 +34,7 @@
         border-radius: 5px;
         border: none;
         cursor: pointer;
+        border: 1px solid rgba(3, 138, 255, 0.4);
+        box-shadow: 0px 4px 4px rgba(3, 138, 255, 0.4);
     }
 }

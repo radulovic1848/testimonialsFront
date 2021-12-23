@@ -17,7 +17,7 @@ const Testimonial: React.FC<Props> = ({id, name, age, location, comments, video,
     const imageUrl = `http://localhost:3001/testimonials/${id}`;
 
     return (
-        <div className='testemonial'>
+        <div className={`testemonial ${isList ? 'list-active' : ''}`}>
             <div className='imageOrVideoContainer'>
                 {video && !isList ? <video src={videoUrl} id="videoPlayer" autoPlay muted loop/> : <img src={imageUrl} alt='altimage' />}
             </div>

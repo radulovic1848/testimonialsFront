@@ -46,8 +46,8 @@ const Panel: React.FC = () => {
     return (
         <div className='panel'>
             <div className='buttons-container'>
-                <button className="grid-button" disabled={!isList} onClick={setList}><span>Grid</span></button>
-                <button className="list-button" disabled={isList} onClick={setList}><span>List</span></button>
+                <button className={`${!isList ? "disabled-button" : ''}`} disabled={!isList} onClick={setList}><span>Grid</span></button>
+                <button className={`${isList ? "disabled-button" : ''}`} disabled={isList} onClick={setList}><span>List</span></button>
             </div>
             <div className={`testimonials-container ${isList  ? 'isList' : ''}`}>
                 {renderTestimonials}
