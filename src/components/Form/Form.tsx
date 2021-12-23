@@ -51,13 +51,29 @@ const Form: React.FC = () => {
         testimonial.append('location', state.location)
         testimonial.append('image', imageOrEmpty)
         
-        getAllTestimonialsApi.createTestimonial(testimonial).then((r: AxiosResponse) => {
-            if (r && r.status === 200) {
+        getAllTestimonialsApi.createTestimonial(testimonial).then((response: AxiosResponse) => {
+            if (response && response.status === 200) {
                 window.location.reload();
-                return r;
+                return response;
             }
         });
     }
+
+    const renderTextarea =
+    <>
+        <textarea placeholder='Your Comment' name='comments' onChange={handleInputChange}></textarea>
+        <label htmlFor="file-upload" className="custom-file-upload">
+            <span>{state.image ? "Your photo is uploaded!" : "Upload your photo"}</span>
+            <input
+                id='file-upload'
+                className='file-input'
+                type="file"
+                name="file"
+                accept=".jpg, .png"
+                onChange={handleFileInput}
+            />
+        </label>
+    </>
     
     return (
         <div className='form-wrapper'>
@@ -65,18 +81,7 @@ const Form: React.FC = () => {
             <TextInput id='text-input' fieldname='name' placeholder='Your Name' onChange={handleInputChange}/>
             <TextInput id='text-input' fieldname='age' placeholder='Your Age' onChange={handleInputChange}/>
             <TextInput id='text-input' fieldname='location' placeholder='Your Location' onChange={handleInputChange}/>
-            <textarea placeholder='Your Comment' name='comments' onChange={handleInputChange}></textarea>
-            <label htmlFor="file-upload" className="custom-file-upload">
-                <span>{state.image ? "Your photo is uploaded!" : "Upload your photo"}</span>
-                <input
-                    id='file-upload'
-                    className='file-input'
-                    type="file"
-                    name="file"
-                    accept=".jpg, .png"
-                    onChange={handleFileInput}
-                />
-            </label>
+            {renderTextarea}
             <button className='submit-button' onClick={submitTheForm}><span>Submit</span></button>
         </div>
     )

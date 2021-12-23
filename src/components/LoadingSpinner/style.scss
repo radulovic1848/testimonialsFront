@@ -1,0 +1,17 @@
+.spinner-container {
+    width: 100%;
+    height: calc(100vh - 250px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .loading-spinner {
+        content: url(../../assets/photos/loading-spinner.png);
+        animation: spin 1s linear infinite;
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}

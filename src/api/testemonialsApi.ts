@@ -9,13 +9,6 @@ const getAllTestimonialsApi = {
             return err['response']
         }
     },
-    // getImage: async (id : number): Promise<AxiosResponse <ArrayBuffer>> => {
-    //     try {
-    //         return await axios.get('http://localhost:3001/testimonials/' + id);
-    //     } catch (err: any) {
-    //         return err['response']
-    //     }
-    // },
     createTestimonial: async (testimonial : FormData): Promise<AxiosResponse> => {
         try {
             return await axios.post('http://localhost:3001/testimonials/', testimonial, {

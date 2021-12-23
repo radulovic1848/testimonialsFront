@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import LoadingSpinner from './../LoadingSpinner/LoadingSpinner'
 import Testimonial from './../Testimonial/Testimonial';
 import { TestimonialsData } from './../Testimonial/types';
 import getAllTestimonialsApi from './../../api/testemonialsApi';
@@ -17,10 +18,24 @@ const Panel: React.FC = () => {
     const [data, setData] = useState<TestimonialsData[]>();
 
     useEffect(() => {
-        getAllTestimonialsApi.getTestimonials().then((r: AxiosResponse<TestimonialsData[]>) => {
-            setData(r.data)
+        getAllTestimonialsApi.getTestimonials().then((response: AxiosResponse<TestimonialsData[]>) => {
+            setData(response.data)
         });
     }, []);
+
+    function setList(event: any) {
+        if (event.target.innerText === 'Grid') {
+            setIsList (false);
+        } else {
+            setIsList (true);
+        }
+    }
+
+    const toggleButtons = 
+                <>
+                <button className={`${!isList ? "disabled-button" : ''}`} disabled={!isList} onClick={setList}><span>Grid</span></button>
+                <button className={`${isList ? "disabled-button" : ''}`} disabled={isList} onClick={setList}><span>List</span></button>
+                </>
 
     const renderTestimonials = data?.map((testimonial) => {
         return <Testimonial 
@@ -35,23 +50,19 @@ const Panel: React.FC = () => {
         />
     })
 
-    function setList(event: any) {
-        if (event.target.innerText === 'Grid') {
-            setIsList (false);
-        } else {
-            setIsList (true);
-        }
-    }
-
     return (
+        
         <div className='panel'>
             <div className='buttons-container'>
-                <button className={`${!isList ? "disabled-button" : ''}`} disabled={!isList} onClick={setList}><span>Grid</span></button>
-                <button className={`${isList ? "disabled-button" : ''}`} disabled={isList} onClick={setList}><span>List</span></button>
+                {toggleButtons}
             </div>
-            <div className={`testimonials-container ${isList  ? 'isList' : ''}`}>
-                {renderTestimonials}
-            </div>
+            {data ? 
+                <div className={`testimonials-container ${isList  ? 'isList' : ''}`}>
+                    {renderTestimonials}
+                </div>
+                :
+                <LoadingSpinner />
+            }
         </div>
     )
 }
