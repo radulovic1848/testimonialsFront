@@ -59,9 +59,15 @@ const Form: React.FC = () => {
         });
     }
 
-    const renderTextarea =
+    function removePhoto() {
+        setState({
+            ...state,
+            image: undefined,
+        });
+    }
+
+    const renderFileUpload =
     <>
-        <textarea placeholder='Your Comment' name='comments' onChange={handleInputChange}></textarea>
         <label htmlFor="file-upload" className="custom-file-upload">
             <span>{state.image ? "Your photo is uploaded!" : "Upload your photo"}</span>
             <input
@@ -81,8 +87,12 @@ const Form: React.FC = () => {
             <TextInput id='text-input' fieldname='name' placeholder='Your Name' onChange={handleInputChange}/>
             <TextInput id='text-input' fieldname='age' placeholder='Your Age' onChange={handleInputChange}/>
             <TextInput id='text-input' fieldname='location' placeholder='Your Location' onChange={handleInputChange}/>
-            {renderTextarea}
-            <button className='submit-button' onClick={submitTheForm}><span>Submit</span></button>
+            <textarea placeholder='Your Comment' name='comments' onChange={handleInputChange}></textarea>
+            {renderFileUpload}
+            <div className='buttons-container'>
+                <button className='form-button' onClick={submitTheForm}><span>Submit</span></button>
+                {state.image && <button className='form-button' onClick={removePhoto}><span>Remove photo</span></button>}
+            </div>
         </div>
     )
 }
