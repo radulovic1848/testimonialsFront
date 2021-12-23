@@ -73,23 +73,26 @@ const Form: React.FC = () => {
     }
 
     const renderFileUpload =
-    <>
-        <label htmlFor="file-upload" className="custom-file-upload">
-            <span>{state.image ? "Your photo is uploaded!" : "Upload your photo"}</span>
-            <input
-                id='file-upload'
-                className='file-input'
-                type="file"
-                name="file"
-                accept=".jpg, .png"
-                onChange={handleFileInput}
-            />
-        </label>
-    </>
+        (
+            <>
+                <label htmlFor="file-upload" className="custom-file-upload">
+                    <span>{state.image ? "Your photo is uploaded!" : "Upload your photo"}</span>
+                    <input
+                        id='file-upload'
+                        className='file-input'
+                        type="file"
+                        name="file"
+                        accept=".jpg, .png"
+                        onChange={handleFileInput}
+                    />
+                </label>
+            </>
+        )
+    
     
     return (
         <div className='form-wrapper'>
-            <h3>Add Your Voice</h3>
+            <h3 className='form-headline'>Add Your Voice</h3>
             <TextInput id='text-input' fieldname='name' placeholder='Your Name' onChange={handleInputChange}/>
             <TextInput id='text-input' fieldname='age' placeholder='Your Age' onChange={handleInputChange}/>
             <TextInput id='text-input' fieldname='location' placeholder='Your Location' onChange={handleInputChange}/>

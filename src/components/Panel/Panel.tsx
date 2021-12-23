@@ -38,16 +38,16 @@ const Panel: React.FC = () => {
                 </>
 
     const renderTestimonials = data?.map((testimonial) => {
-        return <Testimonial 
-        key={testimonial.id}
-        id={testimonial.id}
-        name={testimonial.name} 
-        age={testimonial.age}
-        comments={testimonial.comments}
-        video={testimonial.video}
-        location={testimonial.location}
-        isList={isList}
-        />
+        return (<Testimonial 
+            key={testimonial.id}
+            id={testimonial.id}
+            name={testimonial.name} 
+            age={testimonial.age}
+            comments={testimonial.comments}
+            video={testimonial.video}
+            location={testimonial.location}
+            isList={isList}
+        />)
     })
 
     return (

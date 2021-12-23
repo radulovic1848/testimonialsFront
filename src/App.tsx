@@ -5,12 +5,11 @@ import Panel from './components/Panel/Panel'
 function App() {
   return (
     <div className="App">
-      <h1>Gennev Community Page</h1>
+      <h1 className='headline'>Gennev Community Page</h1>
       <div className='content-wrapper'>
         <Form />
         <Panel />
       </div>
-
     </div>
   );
 }

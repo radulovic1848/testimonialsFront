@@ -21,10 +21,13 @@
     .dataContainer {
         display: flex;
         flex-direction: column;
-        padding: 2%;
+        padding: 10%;
     }
     &.list-active {
         border-radius: 0;
+        .dataContainer {
+            padding: 2%;
+        }
         img {
             border-radius: 0;
         }
